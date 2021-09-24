@@ -3,7 +3,7 @@
     <v-row justify="center" no-gutters>
       <v-btn
         v-for="link in links"
-        :key="link"
+        :key="`${link}-footer-link`"
         color="white"
         text
         rounded
@@ -20,10 +20,10 @@
 </template>
 
 <script>
+import sharedHeaderFooter from "../mixins/sharedHeaderFooter";
+
 export default {
-  data: () => ({
-    links: ["home", "login"],
-  }),
+  mixins: [sharedHeaderFooter],
   computed: {
     footerDate() {
       return new Date().getFullYear();
