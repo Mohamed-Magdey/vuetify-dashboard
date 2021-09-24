@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <Navbar />
+    <Navbar :links="links" />
     <v-main>
       <router-view />
     </v-main>
-    <Footer />
+    <Footer :links="links" />
   </v-app>
 </template>
 
@@ -14,5 +14,8 @@ import Footer from "./components/Footer.vue";
 
 export default {
   components: { Navbar, Footer },
+  data: () => ({
+    links: ["home", "login"],
+  }),
 };
 </script>
