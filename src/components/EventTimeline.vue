@@ -11,7 +11,11 @@
         <v-card-title class="title pt-3 pb-3">
           <h3 class="title">{{ item.title }}</h3>
         </v-card-title>
-        <v-card-text class="white text--primary">
+        <v-card-text
+          class="text--primary"
+          :class="$vuetify.theme.dark ? '' : 'white'"
+          :style="{ 'background-color': $vuetify.theme.dark && '#1E1E1E' }"
+        >
           <p class="pt-3 body-1 mb-0">
             {{ item.text }}
           </p>

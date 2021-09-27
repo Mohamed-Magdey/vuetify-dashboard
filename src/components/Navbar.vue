@@ -11,6 +11,7 @@
     >
       {{ link }}
     </v-btn>
+    <v-btn @click="toggleTheme" text rounded>Toggle Theme</v-btn>
   </v-app-bar>
 </template>
 
@@ -19,6 +20,12 @@ import sharedHeaderFooter from "../mixins/sharedHeaderFooter";
 
 export default {
   mixins: [sharedHeaderFooter],
+  methods: {
+    toggleTheme() {
+      // this.$vuetify.theme.themes.dark.paragraph = "#000";
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    },
+  },
 };
 </script>
 
