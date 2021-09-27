@@ -4,6 +4,12 @@
 
     <SalesGraph v-for="sale in sales" :key="`${sale.title}`" :sale="sale" />
 
+    <StatisticCard
+      v-for="statistic in statistics"
+      :key="`${statistic.title}`"
+      :statistic="statistic"
+    />
+
     <EmployeesTable :employees="employees" @select-employee="setEmployee" />
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
@@ -20,20 +26,24 @@
 
 <script>
 import SalesGraph from "../components/SalesGraph.vue";
+import StatisticCard from "../components/StatisticCard.vue";
 import EmployeesTable from "../components/EmployeesTable.vue";
 
 import salesData from "../data/sales.json";
+import statisticsData from "../data/statistics.json";
 import employeesData from "../data/employees.json";
 
 export default {
   components: {
     SalesGraph,
+    StatisticCard,
     EmployeesTable,
   },
   data() {
     return {
       employees: employeesData,
       sales: salesData,
+      statistics: statisticsData,
       snackbar: false,
       selectedEmployee: {},
       timeout: 2000,
