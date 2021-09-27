@@ -1,18 +1,27 @@
 <template>
-  <div>
+  <v-container>
     <h1 class="display-1 text-center my-5">Dashboard</h1>
 
-    <SalesGraph v-for="sale in sales" :key="`${sale.title}`" :sale="sale" />
+    <v-row>
+      <v-col v-for="sale in sales" :key="`${sale.title}`">
+        <SalesGraph :sale="sale" />
+      </v-col>
+    </v-row>
 
-    <StatisticCard
-      v-for="statistic in statistics"
-      :key="`${statistic.title}`"
-      :statistic="statistic"
-    />
+    <v-row>
+      <v-col v-for="statistic in statistics" :key="`${statistic.title}`">
+        <StatisticCard :statistic="statistic" />
+      </v-col>
+    </v-row>
 
-    <EmployeesTable :employees="employees" @select-employee="setEmployee" />
-
-    <EventTimeline :timeline="timeline" />
+    <v-row>
+      <v-col cols="8">
+        <EmployeesTable :employees="employees" @select-employee="setEmployee" />
+      </v-col>
+      <v-col cols="4">
+        <EventTimeline :timeline="timeline" />
+      </v-col>
+    </v-row>
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
       You have selected {{ selectedEmployee.name }},
@@ -23,7 +32,7 @@
         </v-btn>
       </template>
     </v-snackbar>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -54,21 +63,6 @@ export default {
       selectedEmployee: {},
       timeout: 2000,
     };
-  },
-  computed: {
-    headers() {
-      return [
-        {
-          text: "Employee ID",
-          align: "start",
-          sortable: false,
-          value: "id",
-        },
-        { text: "Name", value: "name" },
-        { text: "Title", value: "title" },
-        { text: "Salary", value: "salary" },
-      ];
-    },
   },
   methods: {
     setEmployee(employee) {
