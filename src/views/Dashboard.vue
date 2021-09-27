@@ -1,35 +1,32 @@
 <template>
-  <v-container>
+  <div>
     <h1 class="display-1 text-center my-5">Dashboard</h1>
-    <v-data-table
-      :headers="headers"
-      :items="employees"
-      :items-per-page="5"
-      class="elevation-1"
-      multi-sort
-      @click:row="selectRow"
-    ></v-data-table>
-    <v-snackbar v-model="snackbar" :timeout="timeout">
-      You have selected {{ currentItem.name }}, {{ currentItem.title }}
 
+    <EmployeesTable :employees="employees" @select-employee="setEmployee" />
+
+    <v-snackbar v-model="snackbar" :timeout="timeout">
+      You have selected {{ selectedEmployee.name }},
+      {{ selectedEmployee.title }}
       <template v-slot:action="{ attrs }">
         <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
           Close
         </v-btn>
       </template>
     </v-snackbar>
-  </v-container>
+  </div>
 </template>
 
 <script>
+import EmployeesTable from "../components/EmployeesTable.vue";
 import employeesData from "../data/employees.json";
 
 export default {
+  components: { EmployeesTable },
   data() {
     return {
       employees: employeesData,
       snackbar: false,
-      currentItem: {},
+      selectedEmployee: {},
       timeout: 2000,
     };
   },
@@ -49,11 +46,11 @@ export default {
     },
   },
   methods: {
-    selectRow(event) {
+    setEmployee(employee) {
       this.snackbar = true;
-      this.currentItem = {
-        name: event.name,
-        title: event.title,
+      this.selectedEmployee = {
+        name: employee.name,
+        title: employee.title,
       };
     },
   },
