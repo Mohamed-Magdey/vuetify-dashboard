@@ -2,6 +2,8 @@
   <div>
     <h1 class="display-1 text-center my-5">Dashboard</h1>
 
+    <SalesGraph v-for="sale in sales" :key="`${sale.title}`" :sale="sale" />
+
     <EmployeesTable :employees="employees" @select-employee="setEmployee" />
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
@@ -17,14 +19,21 @@
 </template>
 
 <script>
+import SalesGraph from "../components/SalesGraph.vue";
 import EmployeesTable from "../components/EmployeesTable.vue";
+
+import salesData from "../data/sales.json";
 import employeesData from "../data/employees.json";
 
 export default {
-  components: { EmployeesTable },
+  components: {
+    SalesGraph,
+    EmployeesTable,
+  },
   data() {
     return {
       employees: employeesData,
+      sales: salesData,
       snackbar: false,
       selectedEmployee: {},
       timeout: 2000,
