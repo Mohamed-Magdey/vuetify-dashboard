@@ -1,6 +1,10 @@
 <template>
   <v-app-bar app color="primary" dark>
     <v-app-bar-title>Vuetify Dashboard</v-app-bar-title>
+    <template v-if="$store.state.user.user">
+      <v-spacer />
+      <h1 class="headline">Welcome {{ $store.state.user.user }}</h1>
+    </template>
     <v-spacer />
     <v-btn
       v-for="link in links"
