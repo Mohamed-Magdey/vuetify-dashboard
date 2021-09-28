@@ -37,6 +37,7 @@ export default {
     submit() {
       if (this.username) {
         this.setNewUser(this.username);
+        this.username = "";
       }
     },
     ...mapActions("user", ["setNewUser"]),
