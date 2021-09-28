@@ -29,6 +29,11 @@ const routes = [
     name: "dashboard",
     component: () => import("../views/Dashboard.vue"),
   },
+  {
+    path: "/mcq",
+    name: "mcq",
+    component: () => import("../views/Mcq.vue"),
+  },
 ];
 
 const router = new VueRouter({

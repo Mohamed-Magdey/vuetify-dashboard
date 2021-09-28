@@ -15,7 +15,7 @@ import Footer from "./components/Footer.vue";
 export default {
   components: { Navbar, Footer },
   data: () => ({
-    links: ["home", "login", "signup", "dashboard"],
+    links: ["home", "mcq", "login", "signup", "dashboard"],
   }),
 };
 </script>
