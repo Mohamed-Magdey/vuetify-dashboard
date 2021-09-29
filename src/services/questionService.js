@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiCall = axios.create({
-  baseURL: "http://mcq-mern-app.herokuapp.com",
+  baseURL: "https://mcq-mern-app.herokuapp.com",
   withCredentials: false,
   headers: {
     Accept: "application/json",
