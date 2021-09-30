@@ -14,8 +14,13 @@ export const mutations = {
 
 export const actions = {
   fetchQuestions({ commit }) {
-    return questionService.getQuestions().then((res) => {
-      commit("SET_QUESTIONS", res.data);
-    });
+    return questionService
+      .getQuestions()
+      .then((res) => {
+        commit("SET_QUESTIONS", res.data);
+      })
+      .catch((err) => {
+        return err.message;
+      });
   },
 };

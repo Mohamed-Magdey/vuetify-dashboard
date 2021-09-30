@@ -8,7 +8,7 @@ const apiCall = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  timeout: 1000,
+  timeout: 10000,
 });
 
 apiCall.interceptors.request.use((res) => {

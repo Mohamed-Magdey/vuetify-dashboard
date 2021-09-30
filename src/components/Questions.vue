@@ -87,9 +87,17 @@ export default {
     }),
   },
   mounted() {
-    this.fetchQuestions().then(
-      () => (this.question = this.questions[this.index])
-    );
+    this.fetchQuestions()
+      .then((res) => {
+        if (this.questions[this.index]) {
+          this.question = this.questions[this.index];
+        } else {
+          throw res;
+        }
+      })
+      .catch((err) => {
+        this.$root.$toast.error("Something went wrong! Please try again.");
+      });
   },
   methods: {
     checkCorrectAnswer() {
