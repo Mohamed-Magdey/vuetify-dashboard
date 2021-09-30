@@ -38,4 +38,13 @@ export default {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+#nprogress .bar {
+  background: #00ff00 !important;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  box-shadow: 0 0 10px#00FF00, 0 0 5px #00ff00 !important;
+}
 </style>
