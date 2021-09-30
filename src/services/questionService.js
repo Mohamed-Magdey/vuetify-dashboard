@@ -1,4 +1,5 @@
 import axios from "axios";
+import NProgress from "nprogress";
 
 const apiCall = axios.create({
   baseURL: "https://mcq-mern-app.herokuapp.com",
@@ -7,7 +8,17 @@ const apiCall = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  timeout: 10000,
+  timeout: 1000,
+});
+
+apiCall.interceptors.request.use((res) => {
+  NProgress.start();
+  return res;
+});
+
+apiCall.interceptors.response.use((config) => {
+  NProgress.done();
+  return config;
 });
 
 export default {
